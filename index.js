@@ -8,11 +8,9 @@ fetchBreedDescription(breedName, (error, data) => {
     console.log('Error fetch details:', error);
   } else {
 
-    if (data.length === 0) { // If array is empty then the cat breed wasn't found
-      console.log(`Cat breed not found.`);
-    } else {
-      console.log(`${data[0].name} breed description: "${data[0].description}"`); // prints out breed name and description
-    }
+   
+    console.log(`${data[0].name} breed description: "${data[0].description}"`); // prints out breed name and description
+    
     
   }
 });

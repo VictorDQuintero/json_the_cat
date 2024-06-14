@@ -9,9 +9,15 @@ const fetchBreedDescription = function(breedName, callback) {
 
   needle.get(url, (error, response) => { // sends get request to the catapi.com
     if (error) {
+      response = null;
       callback(error, response); // if error, sends error and response to callback, error is printed in index.js, response is null
+    } else if (response.body.length === 0) {
+      error = `Cat breed not found.`;
+      response = null;
+      callback(error, response); // if error is null, it sends error and response.body to callback, callback prints out description from response.body
     } else {
-      callback(error, response.body); // if error is null, it sends error and response.body to callback, callback prints out description from response.body
+      
+      callback(error, response.body);
     }
 
   });
