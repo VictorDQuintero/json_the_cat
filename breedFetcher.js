@@ -11,13 +11,12 @@ const fetchBreedDescription = function(breedName, callback) {
     if (error) {
       response = null;
       callback(error, response); // if error, sends error and response to callback, error is printed in index.js, response is null
-    } else if (response.body.length === 0) {
-      error = `Cat breed not found.`;
+    } else if (response.body.length === 0) { // if the response.body array is empty sets error to string and response to null
+      error = "Cat breed not found.";
       response = null;
-      callback(error, response); // if error is null, it sends error and response.body to callback, callback prints out description from response.body
+      callback(error, response);
     } else {
-      
-      callback(error, response.body);
+      callback(error, response.body[0].description);// if error is null, it sends error and the breed's description to callback, callback prints out description from response.body
     }
 
   });
