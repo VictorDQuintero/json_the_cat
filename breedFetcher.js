@@ -14,7 +14,12 @@ needle.get(url, (error, response) => {
   
    
   const data = response.body;
+  
+  if (data.length === 0){
+    console.log(`Cat breed not found.`);
+  } else {
   console.log(`${breed} breed description: ` + data[0].description);
+  }
 
 });
 
