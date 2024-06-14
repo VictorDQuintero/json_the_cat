@@ -16,4 +16,17 @@ describe('fetchBreedDescription', () => {
       done();
     });
   });
+  it('returns a string description for an invalid breed, via callback', (done) => {
+    fetchBreedDescription('Schnauzer', (err, desc) => {
+      // we expect no error for this scenario
+      assert.equal(desc, null);
+
+      const expectedErr = "Cat breed not found."
+
+      // compare returned description
+      assert.equal(expectedErr, err.trim());
+
+      done();
+    });
+  });
 });
